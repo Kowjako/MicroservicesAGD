@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  catalogdb:
+    container_name: catalogdb
+    restart: always
+    ports:
+      - "27017:27017" 
+    volumes:
+      - mongo_data:/data/db # default filesystem for mongo is data/db, map it to our volume
+
+  catalog.api:
+    container_name: catalog.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings:ConnectionString=mongodb://catalogdb:27017" #override appsettings.json value
+    depends_on:
+      - catalogdb
+    ports:
+      - "8000:80" # expose 80 container port to external 8000
