@@ -13,7 +13,7 @@ services:
     container_name: catalog.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "DatabaseSettings:ConnectionString=mongodb://catalogdb:27017" #override appsettings.json value
+      - "DatabaseSettings__ConnectionString=mongodb://catalogdb:27017" #override appsettings.json value
     depends_on:
       - catalogdb
     ports:
