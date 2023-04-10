@@ -65,7 +65,7 @@ namespace Catalog.API.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id:length(24)")]
+        [HttpDelete("{id:length(24)}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> DeleteProduct([FromRoute] string id)

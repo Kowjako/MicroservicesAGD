@@ -7,7 +7,7 @@ namespace Catalog.API.Data
     {
         public static void SeedData(IMongoCollection<Product> collection)
         {
-            if (collection.Find(p => true).Any())
+            if (!collection.Find(p => true).Any())
             {
                 collection.InsertMany(GetDefaultProducts());
             }
