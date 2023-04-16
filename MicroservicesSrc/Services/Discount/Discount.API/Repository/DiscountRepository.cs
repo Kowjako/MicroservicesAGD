@@ -27,7 +27,7 @@ namespace Discount.API.Repository
 
             var sql = "DELETE FROM Coupon WHERE ProductName = @ProductName";
 
-            return await connection.ExecuteAsync(sql, productName) > 0;
+            return await connection.ExecuteAsync(sql, new { @ProductName = productName }) > 0;
         }
 
         public async Task<Coupon> GetDiscount(string productName)
@@ -35,7 +35,7 @@ namespace Discount.API.Repository
             using var connection = new NpgsqlConnection(_configuration["DatabaseSettings:ConnectionString"]);
 
             var sql = "SELECT * FROM Coupon WHERE ProductName = @ProductName";
-            var coupon = await connection.QueryFirstOrDefaultAsync<Coupon>(sql, productName);
+            var coupon = await connection.QueryFirstOrDefaultAsync<Coupon>(sql, new { @ProductName = productName });
             if (coupon == null)
             {
                 return new Coupon()
