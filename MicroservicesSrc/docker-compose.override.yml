@@ -37,3 +37,26 @@ services:
     ports:
       - "8001:80" # expose 80 container port to external 8001
 
+  # DISCOUNT API #
+  discountdb:
+    container_name: discount.postgres-db
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin1234
+      - POSTGRES_DB=DiscountDb
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/posgtesql/data/
+
+  pgadmin:
+    container_name: discount.postgres-db-ui
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@test.com
+      - PGADMIN_DEFAULT_PASSWORD=admin1234
+    restart: always
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/root/.pgadmin

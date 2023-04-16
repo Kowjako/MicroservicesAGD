@@ -19,5 +19,13 @@ services:
       context: .
       dockerfile: Services/Basket/Basket.API/Dockerfile
 
+  discountdb:
+    image: postgres
+
+  pgadmin:
+    image: dpage/pgadmin4
+
 volumes:
   mongo_data:
+  postgres_data:
+  pgadmin_data:
