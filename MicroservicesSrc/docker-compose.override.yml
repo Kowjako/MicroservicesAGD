@@ -53,8 +53,8 @@ services:
   pgadmin:
     container_name: discount.postgres-db-ui
     environment:
-      - PGADMIN_DEFAULT_EMAIL=admin@test.com
-      - PGADMIN_DEFAULT_PASSWORD=admin1234
+      - PGADMIN_DEFAULT_EMAIL=admin@test.com # login for Postgres UI 
+      - PGADMIN_DEFAULT_PASSWORD=admin1234 # pass for Postgres UI
     restart: always
     ports:
       - "5050:80"
@@ -69,5 +69,5 @@ services:
     depends_on:
       - discountdb
     ports:
-      - "8002:80"
+      - "8002:80"  # expose 80 container port to external 8002
 

@@ -1,6 +1,7 @@
 version: '3.4'
 
 services:
+  # CATALOG API #
   catalogdb:
     image: mongo:latest
 
@@ -10,6 +11,7 @@ services:
       context: .
       dockerfile: Services/Catalog/Catalog.API/Dockerfile
 
+  # BASKET API #
   basketdb:
     image: redis:alpine
   
@@ -18,7 +20,8 @@ services:
     build:
       context: .
       dockerfile: Services/Basket/Basket.API/Dockerfile
-
+  
+  # DISCOUNT API #
   discountdb:
     image: postgres
 
