@@ -43,13 +43,14 @@ namespace Ordering.API.Controllers
             return Ok(result);
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<int>> UpdateOrder([FromBody] Order order)
+        public async Task<ActionResult<int>> UpdateOrder([FromRoute] int id, [FromBody] UpdateOrderDTO order)
         {
             var cmd = new UpdateOrderCommand()
             {
+                Id = id,
                 Order = order
             };
 

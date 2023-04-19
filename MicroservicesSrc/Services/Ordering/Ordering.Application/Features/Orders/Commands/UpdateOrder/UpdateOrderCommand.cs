@@ -5,6 +5,7 @@ namespace Ordering.Application.Features.Orders.Commands.UpdateOrder
 {
     public class UpdateOrderCommand : IRequest<Unit>
     {
-        public Order Order { get; set; }
+        public int Id { get; set; }
+        public UpdateOrderDTO Order { get; set; }
     }
 }
