@@ -83,3 +83,12 @@ services:
       - "8003:80"  # expose 80 container port to external 8003
 
 
+  # ORDERING API #
+  orderdb:
+    container_name: ordering.mssql-db
+    restart: always
+    environment:
+      - SA_PASSWORD=Jko3va-D9821jhsvGD
+      - ACCEPT_EULA=Y
+    ports:
+      - "1434:1433"

@@ -40,6 +40,10 @@ services:
       context: .
       dockerfile: Services/Discount/Discount.Grpc/Dockerfile
 
+  # ORDERING API #
+  orderdb:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+
 volumes:
   mongo_data:
   postgres_data:
