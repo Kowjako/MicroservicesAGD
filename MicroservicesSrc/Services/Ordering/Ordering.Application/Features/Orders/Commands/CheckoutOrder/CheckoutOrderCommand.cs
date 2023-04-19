@@ -1,10 +1,10 @@
 ﻿using MediatR;
-using Ordering.Domain.Entities;
+using Ordering.Application.Features.Orders.Queries.GetOrdersList;
 
 namespace Ordering.Application.Features.Orders.Commands.CheckoutOrder
 {
     public class CheckoutOrderCommand : IRequest<int>
     {
-        public Order Order { get; set; }
+        public OrderDTO Order { get; set; }
     }
 }
