@@ -1,3 +1,4 @@
+using Ordering.API.Migrator;
 using Ordering.Application;
 using Ordering.Infrastructure;
 
@@ -10,6 +11,8 @@ builder.Services.RegisterApplicationServices();
 builder.Services.RegisterInfrastructureServices(builder.Configuration);
 
 var app = builder.Build();
+
+await app.MigrateMcrDatabase();
 
 if (app.Environment.IsDevelopment())
 {
