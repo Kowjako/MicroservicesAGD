@@ -109,4 +109,4 @@ services:
     restart: always
     ports:
       - "5672:5672" # rabbitmq port
-      - "15672:15672" # rabbitmq dashboard
+      - "15672:15672" # rabbitmq dashboard - guest-guest is login data
