@@ -29,7 +29,7 @@ namespace Ordering.API.Controllers
             return Ok(orders);
         }
 
-        // Only for test - it will be triggered via RabbitMQ
+        // Only for test - checkout will be triggered via RabbitMQ event bus
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(int))]
         public async Task<ActionResult<int>> CheckoutOrder([FromBody] OrderDTO order)

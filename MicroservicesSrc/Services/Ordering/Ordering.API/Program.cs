@@ -28,6 +28,8 @@ builder.Services.AddMassTransit(cfg =>
         });
     });
 });
+builder.Services.AddScoped<BasketCheckoutConsumer>();
+builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
 
