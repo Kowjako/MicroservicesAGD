@@ -4,7 +4,6 @@ using Ordering.Application.Features.Orders.Commands.CheckoutOrder;
 using Ordering.Application.Features.Orders.Commands.DeleteOrder;
 using Ordering.Application.Features.Orders.Commands.UpdateOrder;
 using Ordering.Application.Features.Orders.Queries.GetOrdersList;
-using Ordering.Domain.Entities;
 
 namespace Ordering.API.Controllers
 {
@@ -30,6 +29,7 @@ namespace Ordering.API.Controllers
         }
 
         // Only for test - checkout will be triggered via RabbitMQ event bus
+        // Also it will not be exposed from Ocelot API Gateway
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(int))]
         public async Task<ActionResult<int>> CheckoutOrder([FromBody] OrderDTO order)

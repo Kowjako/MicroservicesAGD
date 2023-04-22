@@ -8,6 +8,9 @@ builder.Logging.AddConfiguration(builder.Configuration.GetSection("Logging"));
 builder.Logging.AddConsole();
 builder.Logging.AddDebug();
 
+/* Load custom json to IConfiguration */
+builder.Configuration.AddJsonFile($"ocelot.{builder.Environment.EnvironmentName}.json", true, true);
+
 builder.Services.AddOcelot();
 
 var app = builder.Build();
