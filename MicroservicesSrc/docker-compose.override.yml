@@ -114,3 +114,16 @@ services:
     ports:
       - "5672:5672" # rabbitmq port
       - "15672:15672" # rabbitmq dashboard - guest-guest is login data
+
+  # API GATEWAY #
+  ocelotapigateway:
+    container_name: api-gateway
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - catalog.api
+      - basket.api
+      - discount.api
+      - ordering.api
+    ports:
+      - "8010:80"

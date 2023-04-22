@@ -53,8 +53,16 @@ services:
   # QUEUE (MESSAGE BROKER) -> FROM BASKET TO ORDER DURING CHECKOUT BASKET #
   rabbit-queue:
     image: rabbitmq:3-management-alpine
+  
+  # API GATEWAY #
+  ocelotapigateway:
+    image: ${DOCKER_REGISTRY-}ocelotapigateway
+    build:
+      context: .
+      dockerfile: Gateway/OcelotApiGateway/Dockerfile
 
 volumes:
   mongo_data:
   postgres_data:
   pgadmin_data:
+
