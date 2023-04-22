@@ -13,7 +13,7 @@ namespace OcelotApiGateway.Aggregator.Services
 
         public async Task<IEnumerable<OrderResponseModel>> GetOrdersByUsername(string username)
         {
-            return await _httpClient.GetFromJsonAsync<List<OrderResponseModel>>($"/api/v1/Order/{username}");
+            return await _httpClient.GetFromJsonAsync<List<OrderResponseModel>>($"/api/v1/Orders/{username}");
         }
     }
 }
