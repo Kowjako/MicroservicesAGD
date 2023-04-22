@@ -3,12 +3,14 @@ using Basket.API.Repositories;
 using Discount.Grpc.Protos;
 using MassTransit;
 using StackExchange.Redis;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 // Redis
 builder.Services.AddSingleton<IConnectionMultiplexer>(opt =>
