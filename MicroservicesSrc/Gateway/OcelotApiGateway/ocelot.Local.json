@@ -11,7 +11,7 @@
         }
       ],
       "UpstreamPathTemplate": "/Catalog", // route to gateway
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ] // accepted method
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ] // accepted methods
     },
     {
       "DownstreamPathTemplate": "/api/v1/Catalog/{id}",
@@ -72,7 +72,14 @@
         }
       ],
       "UpstreamPathTemplate": "/Basket/Checkout",
-      "UpstreamHttpMethod": [ "POST" ]
+      "UpstreamHttpMethod": [ "POST" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [], // no one can skip rate limit
+        "EnableRateLimiting": true, // enable rate limit
+        "Period": "3s",
+        "PeriodTimespan": 2, // block seconds
+        "Limit": 1 // how much api calls in one period are allowed
+      }
     },
     // DISCOUNT API
     {
