@@ -11,7 +11,10 @@
         }
       ],
       "UpstreamPathTemplate": "/Catalog", // route to gateway
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ] // accepted methods
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ], // accepted methods
+      "FileCacheOptions": { // enable Ocelot response cache
+        "TtlSeconds": 30 
+      }
     },
     {
       "DownstreamPathTemplate": "/api/v1/Catalog/{id}",
