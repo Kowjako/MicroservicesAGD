@@ -61,8 +61,16 @@ services:
       context: .
       dockerfile: Gateway/OcelotApiGateway/Dockerfile
 
+  # GATEWAY AGGREGATOR #
+  ocelotapigateway.aggregator:
+    image: ${DOCKER_REGISTRY-}ocelotapigatewayaggregator
+    build:
+      context: .
+      dockerfile: Gateway/OcelotApiGateway.Aggregator/Dockerfile
+
 volumes:
   mongo_data:
   postgres_data:
   pgadmin_data:
+
 

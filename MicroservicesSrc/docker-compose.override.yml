@@ -16,7 +16,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - "DatabaseSettings__ConnectionString=mongodb://catalogdb:27017" # override appsettings.json value
     depends_on:
-      - catalogdb
+      - catalogdb # we need mongo first, once it starts we can run our service
     ports:
       - "8000:80" # expose 80 container port to external 8000
   
@@ -127,3 +127,20 @@ services:
       - ordering.api
     ports:
       - "8010:80"
+
+  # GATEWAY AGGREGATOR #
+  ocelotapigateway.aggregator:
+    container_name: shopping-agregator
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ApiSettings__CatalogUrl=http://catalog.api"
+      - "ApiSettings__BasketUrl=http://basket.api"
+      - "ApiSettings__OrderingUrl=http://ordering.api"
+    depends_on:
+      - catalog.api
+      - basket.api
+      - discount.api
+      - ordering.api
+    ports:
+      - "8005:80"
+
