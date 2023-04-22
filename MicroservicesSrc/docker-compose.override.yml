@@ -33,8 +33,10 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - "ConnectionStrings__Redis=basketdb:6379" # override appsettings.json value
       - "GrpcSettings__DiscountServiceUrl=http://discount.grpc" # cross-service communcation with discount grpc
+      - "Queue__RabbitMQHost=amqp://guest:guest@rabbit-queue:5672"
     depends_on:
       - basketdb
+      - rabbit-queue
     ports:
       - "8001:80" # expose 80 container port to external 8001
 
@@ -98,8 +100,10 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "ConnectionStrings__OrdersConnectionString=Server=orderdb;Database=OrderDb;User Id=sa;Password=Jko3va-D9821jhsvGD;"
+      - "Queue__RabbitMQHost=amqp://guest:guest@rabbit-queue:5672"
     depends_on:
       - orderdb
+      - rabbit-queue
     ports:
       - "8004:80"
   
